@@ -20,8 +20,8 @@ public class TheaterService implements ITheaterService {
 		return TheaterDAOobject.deleteTheater(theaterId);
 	}
 
-public void viewTheaters(Theater object) {
-		TheaterDAOobject.viewTheaters(object);
+public void viewTheaters() {
+		TheaterDAOobject.viewTheaters();
 	}
 	/*
 	 * validation rules 1.Theater Id will be min 4 digit starting with 2 
@@ -89,6 +89,17 @@ public void viewTheaters(Theater object) {
 		return flag;
 	}
 
+	public static boolean existIdCheck(Theater theaterobject)
+	{
+		boolean flag = false;
+		
+		flag=theaterobject.listOfTheaters.containsKey(theaterobject.getTheaterId());
+		
+		
+		return flag;
+
+		
+	}
 	public static boolean userValidation(Theater object) {
 		boolean flag = false;
 		if (isValidTheaterId(object.getTheaterId()) && isValidTheaterName(object.getTheaterName())

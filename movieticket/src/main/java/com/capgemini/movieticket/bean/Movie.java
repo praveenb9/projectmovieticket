@@ -26,7 +26,7 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		return "Movie [movieName=" + movieName + "]";
+		return "movieName=" + movieName ;
 	}
 
 }

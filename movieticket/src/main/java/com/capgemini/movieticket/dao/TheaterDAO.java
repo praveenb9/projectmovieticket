@@ -13,6 +13,8 @@ public class TheaterDAO implements ITheaterDAO {
 	// User userObject=new User();
 	// Screen screenobject=new Screen();
 //Show showObject=new Show();
+	
+	
 	// Adding the theater and no of screens
 
 	Theater theaterObject1=new Theater();
@@ -21,30 +23,21 @@ public class TheaterDAO implements ITheaterDAO {
 	public Theater addTheater(Theater theaterObject2) {
 		Theater obj = null;
 
+		Theater flag=theaterObject2.listOfTheaters.put(theaterObject2.getTheaterId(), theaterObject2);
+
 		// boolean flag=theaterObject2.listOfTheaters.add(theaterObject2);
 		//Map<Integer,Theater> map=new HashMap<Integer,Theater>();
 		//map.put(theaterObject2.getTheaterId(), theaterObject2);
-		String flag=theaterObject2.listOfTheaters.put(theaterObject2.getTheaterId(), theaterObject2.getTheaterName());
+		//String flag=theaterObject2.listOfTheaters.put(theaterObject2.getTheaterId(), theaterObject2.getTheaterName());
+		//Theater flag=theaterObject2.listOfTheaters.put(theaterObject2.getTheaterId(), theaterObject2);
 		// theaterObject1.setListOfTheaters(map);
 		//screenobject.setShowList(showObject);
-
-		 //System.out.println(flag);
+		// System.out.println(flag);
 
 		if (flag == null) {
 			obj = theaterObject2;
 
 		}
-		 
-		 /*if (flag == true) {
-				obj = theaterObject2;
-
-			} 
-		 */
-		// System.out.println(obj);
-		// putting into map <Integer,Screen>
-		// Theater.listOfScreens.put(object.getTheaterId(),screenobject);
-		// Theater.listOfScreens.put(object.getTheaterId(),new Screen());
-
 		return obj;
 	}
 
@@ -59,7 +52,7 @@ public class TheaterDAO implements ITheaterDAO {
 		// System.out.println(Theater.listOfTheaters);
 
 		//Theater delete = theaterObject1.listOfTheaters.remove(theaterId);
-		String delete =theaterObject1.listOfTheaters.remove(theaterId);
+		Theater delete =theaterObject1.listOfTheaters.remove(theaterId);
 		//Theater delete = theaterObject1.listOfTheaters.remove(theaterId);
 		
 		//System.out.println(delete);
@@ -72,14 +65,14 @@ public class TheaterDAO implements ITheaterDAO {
 		return flag;
 	}
 
-	public void viewTheaters(Theater object) {
+	public void viewTheaters() {
 	
 		Set<Integer> set = theaterObject1.listOfTheaters.keySet();
 		//System.out.println(set);
 		Iterator it = set.iterator();
 		while (it.hasNext()) {
 			Integer key = (Integer) it.next();
-			System.out.println("TheaterId - " + key + " " + " TheaterName - " + theaterObject1.listOfTheaters.get(key));
+			System.out.println("TheaterId - " + key + " "+ theaterObject1.listOfTheaters.get(key));
 			//System.out.println( theaterObject1.getListOfTheaters().get(key));
 
 		}

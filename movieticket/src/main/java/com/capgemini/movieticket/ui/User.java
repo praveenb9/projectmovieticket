@@ -1,5 +1,7 @@
 package com.capgemini.movieticket.ui;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.capgemini.movieticket.bean.Movie;
@@ -13,10 +15,11 @@ public class User {
 
 	public static void main(String[] args) {
 
-		Theater theaterobject = new Theater();
+		// Theater theaterobject = new Theater();
 		// Screen screenobj = new Screen();
-		Show showObject=new Show();
-Movie movieObject=new Movie();
+		/*
+		 * Show showObject=new Show(); Movie movieObject=new Movie();
+		 */
 		ITheaterService serviceobject = new TheaterService();
 		Scanner input = new Scanner(System.in);
 		while (true) {
@@ -31,6 +34,9 @@ Movie movieObject=new Movie();
 
 			switch (action) {
 			case 1:
+				Theater theaterobject = new Theater();
+				Show showObject = new Show();
+				Movie movieObject = new Movie();
 				System.out.println("Adding the theater");
 				System.out.println("Enter Theater Name (name should not be null)");
 				String theaterName = input.next();
@@ -45,46 +51,52 @@ Movie movieObject=new Movie();
 				System.out.println("Enter The Number Of Screens");
 				int screens = input.nextInt();
 				System.out.println("Enter the no of shows");
-				int noOfShows=input.nextInt();
+				int noOfShows = input.nextInt();
 				System.out.println("Enter MovieName");
-				String movieName=input.next();
-				// screenobj.setNumberOfScreens(Screens);
-			
-				// System.out.println(screenobj.getNumberOfScreens());
-
-				// Setting the values for theater attributes
-
+				String movieName = input.next();
 				theaterobject.setTheaterName(theaterName);
+
 				theaterobject.setTheatreId(theaterId);
 				theaterobject.setCity(city);
 				theaterobject.setManagerName(managerName);
 				theaterobject.setManagerContact(managerContact);
 				showObject.setNoOfShows(noOfShows);
 				movieObject.setMovieName(movieName);
-				//movieObject.setMovieName(movieName);;
-				// validations for details
-				boolean valid = TheaterService.userValidation(theaterobject);
-				if (valid) {
+				
+				boolean existId = TheaterService.existIdCheck(theaterobject); //checking for duplicate theater Id 
+				
+				if (existId == true) {
+					System.out.println("Theater with Id " + theaterobject.getTheaterId() + " Aleady exist");
+				} 
+				else {
+									
+					// validations for details
+					boolean valid = TheaterService.userValidation(theaterobject);
+					if (valid) {
 
-					// adding the theater after validation
-					
-				//	Screen screenobj = new Screen(screens);
-					
-					//Screen screenObj = new Screen();
-					
-				//	screenObj.setNumberOfScreens(screens);
-					
-					Theater add = serviceobject.addTheater(theaterobject);
-					
-					//theaterobject.listOfScreens.put(theaterobject.getTheaterId(), new Screen(screens));
-					theaterobject.listOfScreens.add(new Screen(screens));
-					theaterobject.movies.add(movieObject);
-					System.out.println("Theater With Id " + add + " Is Added");
-					//System.out.println(theaterobject.listOfScreens);
-				} else {
-					System.out.println(" Could Not Add Theater");
+						List<Show> shows = new ArrayList<Show>();
+						shows.add(showObject);
+						// adding the theater after validation
+
+						// Screen screenobj = new Screen(screens);
+
+						// Screen screenObj = new Screen();
+
+						// screenObj.setNumberOfScreens(screens);
+
+						Theater add = serviceobject.addTheater(theaterobject);
+
+						// theaterobject.listOfScreens.put(theaterobject.getTheaterId(), new
+						// Screen(screens));
+						theaterobject.listOfScreens.add(new Screen(screens, shows));
+						theaterobject.movies.add(movieObject);
+						// System.out.println("Theater With Id " + add.getTheaterId() + " Is Added");
+
+						System.out.println("Theater added");
+					} else {
+						System.out.println(" Could Not Add Theater");
+					}
 				}
-
 				break;
 			case 2: {
 				System.out.println("Enter The TheaterId");
@@ -102,14 +114,9 @@ Movie movieObject=new Movie();
 				break;
 			}
 			case 3:
-				/*for (Theater lst : Theater.listOfTheaters) {
-					System.out.println(lst);
-				}*/
 				System.out.println("Available Theaters");
-				//System.out.println(theaterobject);
-				
-				System.out.println("next from view theaters method");
-				serviceobject.viewTheaters(theaterobject);
+				// System.out.println(theaterobject);
+				serviceobject.viewTheaters();
 				break;
 
 			default:

@@ -16,7 +16,7 @@ public class Theater {
 	//public  Map<Integer,Screen> listOfScreens=new HashMap<Integer,Screen>();
 	 public List<Screen> listOfScreens = new ArrayList<Screen>();
 	//public  List<Theater> listOfTheaters = new ArrayList<Theater>();
-	public  static Map<Integer,String> listOfTheaters=new HashMap<Integer,String>();
+	public  static Map<Integer,Theater> listOfTheaters=new HashMap<Integer,Theater>();
 	public int getTheaterId() {
 		return theaterId;
 	}
@@ -24,6 +24,12 @@ public class Theater {
 		this.theaterId = theatreId;
 	}
 	
+	public static Map<Integer, Theater> getListOfTheaters() {
+		return listOfTheaters;
+	}
+	public static void setListOfTheaters(Map<Integer, Theater> listOfTheaters) {
+		Theater.listOfTheaters = listOfTheaters;
+	}
 	/*public Map<Integer, String> getListOfTheaters() {
 		return listOfTheaters;
 	}
@@ -68,6 +74,8 @@ public class Theater {
 	}
 	@Override
 	public String toString() {
-		return "theaterId=" + theaterId + ", theaterName=" + theaterName  ;
+		return "TheaterName=" + theaterName + ", City=" + city + ", ManagerName=" + managerName
+				+ ", managerContact=" + managerContact + ", movies=" + movies  + listOfScreens;
 	}
+	
 }

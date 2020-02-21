@@ -6,6 +6,6 @@ public interface ITheaterService {
 
 	Theater addTheater(Theater object);
 	boolean  deleteTheater(int theaterId);
-	 void viewTheaters(Theater object);
+	 void viewTheaters();
 
 }

@@ -7,12 +7,18 @@ public class Screen {
  int numberOfScreens;
 public List<Show> showList=new ArrayList<Show>();
 
-	public Screen() {}
-
-public Screen(int numberOfScreens) {
+	public Screen(int numberOfScreens, List<Show> showList) {
 	super();
 	this.numberOfScreens = numberOfScreens;
+	this.showList = showList;
 }
+
+	public Screen() {}
+
+/*public Screen(int numberOfScreens) {
+	super();
+	this.numberOfScreens = numberOfScreens;
+}*/
 
 public int getNumberOfScreens() {
 	return numberOfScreens;
