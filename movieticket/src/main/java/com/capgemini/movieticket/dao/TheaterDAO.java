@@ -46,16 +46,14 @@ public class TheaterDAO implements ITheaterDAO {
 	public boolean deleteTheater(int theaterId) {
 		// listOfTheaters.remove(theaterId);
 		boolean flag = false;
-
-		// Set<Integer> set = Theater.listOfTheaters.keySet();
-
-		// System.out.println(Theater.listOfTheaters);
-
-		//Theater delete = theaterObject1.listOfTheaters.remove(theaterId);
 		Theater delete =theaterObject1.listOfTheaters.remove(theaterId);
+
 		//Theater delete = theaterObject1.listOfTheaters.remove(theaterId);
-		
+		//Theater delete =theaterObject1.listOfTheaters.remove(theaterId);
+		//Theater delete = theaterObject1.listOfTheaters.remove(theaterId);
 		//System.out.println(delete);
+		
+		
 		if (delete != null) {
 			flag = true;
 		}

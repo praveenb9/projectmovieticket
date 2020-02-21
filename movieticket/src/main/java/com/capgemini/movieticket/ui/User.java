@@ -20,9 +20,11 @@ public class User {
 		/*
 		 * Show showObject=new Show(); Movie movieObject=new Movie();
 		 */
+		
 		ITheaterService serviceobject = new TheaterService();
 		Scanner input = new Scanner(System.in);
 		while (true) {
+			System.out.println();
 			System.out.println("Admin Accessed");
 			System.out.println("you can proceed for the following actions");
 			System.out.println("1. Add Theater");
@@ -34,6 +36,7 @@ public class User {
 
 			switch (action) {
 			case 1:
+				//Taking The Inputs
 				Theater theaterobject = new Theater();
 				Show showObject = new Show();
 				Movie movieObject = new Movie();
@@ -54,59 +57,65 @@ public class User {
 				int noOfShows = input.nextInt();
 				System.out.println("Enter MovieName");
 				String movieName = input.next();
+				
+				// setting the values for Theater class Attributes
 				theaterobject.setTheaterName(theaterName);
-
 				theaterobject.setTheatreId(theaterId);
 				theaterobject.setCity(city);
 				theaterobject.setManagerName(managerName);
 				theaterobject.setManagerContact(managerContact);
 				showObject.setNoOfShows(noOfShows);
 				movieObject.setMovieName(movieName);
-				
-				boolean existId = TheaterService.existIdCheck(theaterobject); //checking for duplicate theater Id 
-				
+
+				boolean existId = TheaterService.existIdCheck(theaterobject); // checking for duplicate theater Id
+
 				if (existId == true) {
 					System.out.println("Theater with Id " + theaterobject.getTheaterId() + " Aleady exist");
-				} 
+				}
 				else {
-									
-					// validations for details
+
+					// validations for given details
 					boolean valid = TheaterService.userValidation(theaterobject);
 					if (valid) {
 
-						List<Show> shows = new ArrayList<Show>();
-						shows.add(showObject);
 						// adding the theater after validation
 
-						// Screen screenobj = new Screen(screens);
+						List<Show> shows = new ArrayList<Show>();
+						shows.add(showObject);
 
-						// Screen screenObj = new Screen();
-
-						// screenObj.setNumberOfScreens(screens);
-
-						Theater add = serviceobject.addTheater(theaterobject);
-
-						// theaterobject.listOfScreens.put(theaterobject.getTheaterId(), new
-						// Screen(screens));
-						theaterobject.listOfScreens.add(new Screen(screens, shows));
-						theaterobject.movies.add(movieObject);
-						// System.out.println("Theater With Id " + add.getTheaterId() + " Is Added");
-
+						Theater add = serviceobject.addTheater(theaterobject);//adding the theater
+						theaterobject.listOfScreens.add(new Screen(screens, shows));//adding no of screens and shows
+						theaterobject.movies.add(movieObject);//adding movie
 						System.out.println("Theater added");
-					} else {
+					} 
+					else 
+					{
 						System.out.println(" Could Not Add Theater");
 					}
 				}
 				break;
-			case 2: {
+			case 2: 
+			{
+				
+				//Deleting The Theater
+				
 				System.out.println("Enter The TheaterId");
 				int theaterId1 = input.nextInt();
-				boolean flag = serviceobject.deleteTheater(theaterId1);
-				if (flag == true) {
-					System.out.println("Theater With Id " + theaterId1 + " Deleted Successfully");
+				boolean validId = TheaterService.isValidTheaterId(theaterId1);
+				if (validId) {
+					boolean flag = serviceobject.deleteTheater(theaterId1);
+					if (flag == true) {
+						System.out.println("Theater With Id " + theaterId1 + " Deleted Successfully");
 
-				} else {
-					System.out.println("Theater Not Deleted");
+					} 
+					else 
+					{
+						System.out.println("Cannot Delete Theater - Theater Is Not Present With Given Id");
+					}
+				} 
+				else 
+				{
+					System.out.println("Please Enter a Valid TheaterId");
 				}
 
 				// System.out.println(Theater.listOfScreens);
@@ -114,12 +123,23 @@ public class User {
 				break;
 			}
 			case 3:
+				if(Theater.listOfTheaters.isEmpty())
+				{
+					System.out.println("Zero Theaters Available");
+				}
+				else
+				{
 				System.out.println("Available Theaters");
-				// System.out.println(theaterobject);
+				System.out.println();
 				serviceobject.viewTheaters();
+				}
 				break;
-
+			case 4:
+				System.out.println("You Are Out Of Admin Console");
+				System.out.println("Login Again To Add Theaters");
+				System.exit(0);
 			default:
+				System.out.println("Enter a Valid Choice");
 				break;
 			}
 
