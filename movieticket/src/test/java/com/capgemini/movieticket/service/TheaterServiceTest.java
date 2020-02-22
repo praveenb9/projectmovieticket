@@ -35,18 +35,7 @@ static Theater theaterObject;
 
 	}
 
-	@Test
-	void testUserValidation() {
-
-		//Theater theaterObject = new Theater();
-		/*theaterObject.setTheatreId(2367);
-		theaterObject.setTheaterName("vimal");
-		theaterObject.setManagerName("praveen");
-		theaterObject.setManagerContact("9878987678");*/
-		
-		boolean flag = TheaterService.userValidation(theaterObject);
-
-		assertEquals(true, flag);
+	
 	}
 
-}
+

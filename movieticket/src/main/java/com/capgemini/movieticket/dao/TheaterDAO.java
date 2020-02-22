@@ -63,18 +63,10 @@ public class TheaterDAO implements ITheaterDAO {
 		return flag;
 	}
 
-	public void viewTheaters() {
+	public  Map<Integer, Theater>  viewTheaters() {
 	
-		Set<Integer> set = theaterObject1.listOfTheaters.keySet();
-		//System.out.println(set);
-		Iterator it = set.iterator();
-		while (it.hasNext()) {
-			Integer key = (Integer) it.next();
-			System.out.println("TheaterId - " + key + " "+ theaterObject1.listOfTheaters.get(key));
-			//System.out.println( theaterObject1.getListOfTheaters().get(key));
+		return Theater.getListOfTheaters();
 
-		}
-		
 	}
 
 }

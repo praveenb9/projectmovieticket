@@ -1,5 +1,7 @@
 package com.capgemini.movieticket.service;
 
+import java.util.Map;
+
 import com.capgemini.movieticket.bean.Theater;
 import com.capgemini.movieticket.dao.ITheaterDAO;
 import com.capgemini.movieticket.dao.TheaterDAO;
@@ -20,8 +22,8 @@ public class TheaterService implements ITheaterService {
 		return TheaterDAOobject.deleteTheater(theaterId);
 	}
 
-public void viewTheaters() {
-		TheaterDAOobject.viewTheaters();
+public Map<Integer,Theater> viewTheaters() {
+		return TheaterDAOobject.viewTheaters();
 	}
 	/*
 	 * validation rules 1.Theater Id will be min 4 digit starting with 2 

@@ -3,8 +3,11 @@ package com.capgemini.movieticket.ui;
 //Modules- Adding and Deleting Theater
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 import com.capgemini.movieticket.bean.Movie;
 import com.capgemini.movieticket.bean.Screen;
@@ -139,7 +142,15 @@ public class User {
 				{
 				System.out.println("Available Theaters");
 				System.out.println();
-				serviceobject.viewTheaters();
+				Map<Integer,Theater> listOfTheaters=serviceobject.viewTheaters();
+				Set<Integer> set = listOfTheaters.keySet();
+				//System.out.println(set);
+				Iterator it = set.iterator();
+				while (it.hasNext()) {
+					Integer key = (Integer) it.next();
+					System.out.println("TheaterId - " + key + " "+ listOfTheaters.get(key));
+					//System.out.println( theaterObject1.getListOfTheaters().get(key));
+				}
 				}
 				break;
 			case 4:
