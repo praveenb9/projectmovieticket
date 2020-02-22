@@ -1,5 +1,6 @@
 package com.capgemini.movieticket.ui;
-
+// project Movie Ticket 
+//Modules- Adding and Deleting Theater
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

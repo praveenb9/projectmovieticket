@@ -13,16 +13,19 @@ import com.capgemini.movieticket.bean.Theater;
 class TheaterServiceTest {
 
 	static ITheaterService serviceObject;
-
+static Theater theaterObject;
 	@BeforeAll
 	public static void setUp() {
 		serviceObject = new TheaterService();
-
+		theaterObject = new Theater();
+		theaterObject.setTheatreId(2367);
+		theaterObject.setTheaterName("vimal");
+		theaterObject.setManagerName("praveen");
+		theaterObject.setManagerContact("9878987678");
 	}
 
 	@Test
 	void testDeleteTheater() {
-		Theater theaterObject = new Theater();
 		theaterObject.setTheatreId(2765);
 		Map<Integer, Theater> map = new HashMap<Integer, Theater>();
 		map.put(theaterObject.getTheaterId(), theaterObject);
@@ -35,11 +38,11 @@ class TheaterServiceTest {
 	@Test
 	void testUserValidation() {
 
-		Theater theaterObject = new Theater();
-		theaterObject.setTheatreId(2367);
+		//Theater theaterObject = new Theater();
+		/*theaterObject.setTheatreId(2367);
 		theaterObject.setTheaterName("vimal");
 		theaterObject.setManagerName("praveen");
-		theaterObject.setManagerContact("9878987678");
+		theaterObject.setManagerContact("9878987678");*/
 		boolean flag = TheaterService.userValidation(theaterObject);
 
 		assertEquals(true, flag);
