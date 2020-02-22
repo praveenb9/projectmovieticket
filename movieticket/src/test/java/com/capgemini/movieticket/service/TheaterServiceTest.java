@@ -1,5 +1,5 @@
 package com.capgemini.movieticket.service;
-
+// Testing for Methods - delete Theater and UserValidations
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.HashMap;
@@ -43,6 +43,7 @@ static Theater theaterObject;
 		theaterObject.setTheaterName("vimal");
 		theaterObject.setManagerName("praveen");
 		theaterObject.setManagerContact("9878987678");*/
+		
 		boolean flag = TheaterService.userValidation(theaterObject);
 
 		assertEquals(true, flag);

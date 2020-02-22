@@ -77,7 +77,7 @@ public void viewTheaters() {
 	public static boolean isValidmanagerContact(String managerContact) {
 		boolean flag = false;
 
-		flag = managerContact.matches("(0|91)?[6-9][0-9]{9}");
+		flag = managerContact.matches("(0|91)?[1-9][0-9]{9}");
 		if (flag == false) {
 			try {
 				throw new InValidNameException("Invalid managerContact");

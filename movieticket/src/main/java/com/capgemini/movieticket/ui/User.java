@@ -2,6 +2,7 @@ package com.capgemini.movieticket.ui;
 // project Movie Ticket 
 //Modules- Adding and Deleting Theater
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,7 +22,7 @@ public class User {
 		/*
 		 * Show showObject=new Show(); Movie movieObject=new Movie();
 		 */
-		
+		try {
 		ITheaterService serviceobject = new TheaterService();
 		Scanner input = new Scanner(System.in);
 		while (true) {
@@ -41,6 +42,9 @@ public class User {
 				Theater theaterobject = new Theater();
 				Show showObject = new Show();
 				Movie movieObject = new Movie();
+				
+					
+			
 				System.out.println("Adding the theater");
 				System.out.println("Enter Theater Name (name should not be null)");
 				String theaterName = input.next();
@@ -50,7 +54,7 @@ public class User {
 				String city = input.next();
 				System.out.println("Enter Manager Name(name should not be null)");
 				String managerName = input.next();
-				System.out.println("Enter Manager Contact");
+				System.out.println("Enter Manager Contact(Valid 10 digit number)");
 				String managerContact = input.next();
 				System.out.println("Enter The Number Of Screens");
 				int screens = input.nextInt();
@@ -58,6 +62,7 @@ public class User {
 				int noOfShows = input.nextInt();
 				System.out.println("Enter MovieName");
 				String movieName = input.next();
+				
 				
 				// setting the values for Theater class Attributes
 				theaterobject.setTheaterName(theaterName);
@@ -94,13 +99,15 @@ public class User {
 						System.out.println(" Could Not Add Theater");
 					}
 				}
+			
+				
 				break;
 			case 2: 
 			{
 				
 				//Deleting The Theater
 				
-				System.out.println("Enter The TheaterId");
+				System.out.println("Enter The TheaterId (ID must be minimum 4 digit starting with 2)");
 				int theaterId1 = input.nextInt();
 				boolean validId = TheaterService.isValidTheaterId(theaterId1);
 				if (validId) {
@@ -145,6 +152,10 @@ public class User {
 			}
 
 		}
-
+		}
+		catch(InputMismatchException e)
+		{
+			System.err.println(e);
+		}
 	}
 }
