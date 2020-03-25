@@ -5,7 +5,9 @@ import java.util.Map;
 import com.capgemini.movieticket.bean.Theater;
 import com.capgemini.movieticket.dao.ITheaterDAO;
 import com.capgemini.movieticket.dao.TheaterDAO;
+import com.capgemini.movieticket.exception.InValidContact;
 import com.capgemini.movieticket.exception.InValidIdException;
+import com.capgemini.movieticket.exception.InValidManagerName;
 import com.capgemini.movieticket.exception.InValidNameException;
 
 public class TheaterService implements ITheaterService {
@@ -35,11 +37,7 @@ public Map<Integer,Theater> viewTheaters() {
 		String id = theaterId + "";
 		flag = id.matches("[2][0-9]+");
 		if (flag == false) {
-			try {
-				throw new InValidIdException("Invalid TheaterId");
-			} catch (InValidIdException ex) {
-
-			}
+				throw new InValidIdException();
 		}
 
 		return flag;
@@ -54,11 +52,9 @@ public Map<Integer,Theater> viewTheaters() {
 		flag = theaterName.matches("[a-z][a-z]+");
 
 		if (flag == false) {
-			try {
-				throw new InValidNameException("Invalid TheaterName");
-			} catch (InValidNameException ex) {
-
-			}
+		
+				throw new InValidNameException();
+			
 		}
 		return flag;
 	}
@@ -67,11 +63,8 @@ public Map<Integer,Theater> viewTheaters() {
 		boolean flag = false;
 		flag = managerName.matches("[a-z][a-z]+");
 		if (flag == false) {
-			try {
-				throw new InValidNameException("Invalid managerName");
-			} catch (InValidNameException ex) {
-
-			}
+				throw new InValidManagerName();
+			
 		}
 		return flag;
 	}
@@ -81,11 +74,8 @@ public Map<Integer,Theater> viewTheaters() {
 
 		flag = managerContact.matches("(0|91)?[1-9][0-9]{9}");
 		if (flag == false) {
-			try {
-				throw new InValidNameException("Invalid managerContact");
-			} catch (InValidNameException ex) {
-
-			}
+				throw new InValidContact();
+			
 		}
 
 		return flag;
@@ -95,7 +85,7 @@ public Map<Integer,Theater> viewTheaters() {
 	{
 		boolean flag = false;
 		
-		flag=theaterobject.listOfTheaters.containsKey(theaterobject.getTheaterId());
+		flag=TheaterDAO.listOfTheaters.containsKey(theaterobject.getTheaterId());
 		
 		
 		return flag;

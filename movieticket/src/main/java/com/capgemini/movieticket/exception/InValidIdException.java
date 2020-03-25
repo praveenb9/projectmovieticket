@@ -2,10 +2,9 @@ package com.capgemini.movieticket.exception;
 
 public class InValidIdException extends RuntimeException{
 
-	public InValidIdException(String exception)
+	public InValidIdException()
 	{
-		//System.err.println("Exception Raised");
-		System.err.println(exception);
+		
 	}
 	
 }

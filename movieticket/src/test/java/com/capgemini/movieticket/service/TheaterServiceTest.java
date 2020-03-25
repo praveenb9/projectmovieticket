@@ -18,7 +18,7 @@ static Theater theaterObject;
 	public static void setUp() {
 		serviceObject = new TheaterService();
 		theaterObject = new Theater();
-		theaterObject.setTheatreId(2367);
+		theaterObject.setTheaterId(2367);
 		theaterObject.setTheaterName("vimal");
 		theaterObject.setManagerName("praveen");
 		theaterObject.setManagerContact("9878987678");
@@ -26,7 +26,7 @@ static Theater theaterObject;
 
 	@Test
 	void testDeleteTheater() {
-		theaterObject.setTheatreId(2765);
+		theaterObject.setTheaterId(2765);
 		Map<Integer, Theater> map = new HashMap<Integer, Theater>();
 		map.put(theaterObject.getTheaterId(), theaterObject);
 		theaterObject.setListOfTheaters(map);

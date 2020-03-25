@@ -20,7 +20,7 @@ public class Theater {
 	public int getTheaterId() {
 		return theaterId;
 	}
-	public void setTheatreId(int theatreId) {
+	public void setTheaterId(int theatreId) {
 		this.theaterId = theatreId;
 	}
 	

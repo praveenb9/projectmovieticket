@@ -18,7 +18,7 @@ static Theater theaterObject;
 	public static void setUp() {
 		serviceObject = new TheaterDAO();
 		theaterObject = new Theater();
-		theaterObject.setTheatreId(2367);
+		theaterObject.setTheaterId(2367);
 		theaterObject.setTheaterName("vimal");
 		theaterObject.setManagerName("praveen");
 		theaterObject.setManagerContact("9878987678");
